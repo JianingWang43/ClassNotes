@@ -355,7 +355,7 @@ Process exited after 0.04111 seconds with return value 0
 
 ## unique_ptr
 
-- 没有复制构造函数，只有移动构造函数（参数是左值引用），所以只能用右值构造，不能用左值构造。
+- 没有复制构造函数，只有移动构造函数（参数是右值引用），所以只能用右值构造，不能用左值构造。
 - 整个程序中，只有一个unique_ptr能够持有某一个对象，若构造函数试图多次传入同一个地址则报错。
 - 只能移动构造，所以如果unique_ptr的左值作为vector.push_back的参数，则必须先用std::move转为右值，从而使用push_back的右值重载版本来进行移动构造。如果不加std::move，则会报错，因为进入push_back的左值重载版本后会发现没有复制构造函数。
 
